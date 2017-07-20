@@ -24,7 +24,6 @@ public class AkConfig {
 		String localFilePath = akConfigProperties().getProperty("local.akconfigfile", null);
 		
 		File configFile = new File(serverFilePath);
-
 		if (!configFile.exists()) {
 			configFilePath = localFilePath;
 			configFile = new File(configFilePath);
@@ -32,6 +31,8 @@ public class AkConfig {
 				System.err.println("Konfigurationsdatei " + configFilePath + " existiert nicht! Bitte pruefen und ggf. anlegen.");
 				return null;
 			}
+		} else {
+			configFilePath = serverFilePath;
 		}
 
 		Map<String, String> akConfigMap = new HashMap<String, String>();
